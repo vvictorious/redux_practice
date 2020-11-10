@@ -1,5 +1,5 @@
 import './App.css';
-import Line from 'react-chartjs-2'
+import {Line} from 'react-chartjs-2'
 
 function App() {
 
@@ -14,8 +14,17 @@ function App() {
     }]
   }
 
+  const fetchData = (time) => {
+    //fetch data from redux using time 
+  }
+
   return (
     <div className="App">
+      <div className={"btns-wrapper"}>
+        <button onClick={ () => fetchData("1 Min")}>1 Min</button>
+        <button onClick={ () => fetchData("5 Min")}>5 Min</button>
+        <button onClick={ () => fetchData("15 Min")}>15 Min</button>
+      </div>
       <Line 
         data={data}
       />
