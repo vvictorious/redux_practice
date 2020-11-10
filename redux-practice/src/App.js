@@ -1,8 +1,9 @@
+import React, {useState} from 'react'
 import './App.css';
 import {Line} from 'react-chartjs-2'
 
 function App() {
-
+  const [num, setNum] = useState(15)
   const data = {
     labels: ["11:00", "12:00"],
     datasets: [{
@@ -18,16 +19,22 @@ function App() {
     //fetch data from redux using time 
   }
 
+  const loading = true
+
   return (
     <div className="App">
       <div className={"btns-wrapper"}>
         <button onClick={ () => fetchData("1 Min")}>1 Min</button>
         <button onClick={ () => fetchData("5 Min")}>5 Min</button>
         <button onClick={ () => fetchData("15 Min")}>15 Min</button>
+        <input onChange={ e => setNum(e.target.value)} />
+        {loading &&  <p>Loading...</p>}
       </div>
-      <Line 
-        data={data}
-      />
+      <div className={"chart-wrapper"}>
+        <Line 
+          data={data}
+        />
+      </div>
     </div>
   );
 }
